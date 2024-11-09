@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="stylesheets/profile.css">
+</head>
+<body>
+    <div class="profile-container">
+        <div class="user-info">
+            <h2><%= user.name  %></h2>
+            <p><%= user.email  %></p>
+        
+            <img src="/images/<%= user.profilepic %>" class="profile-picture">
+            <button id="edit-profile">Edit Profile</button>
+            
+            <form id="edit-profile-form" action="/uploads" method="post" enctype="multipart/form-data" style="display:none;">
+                <input type="file" name="image" accept="image/*">
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+
+        <div class="post-form">
+            <h3>Create Post</h3>
+            <form action="/post" method="post">
+                <textarea id="new-post" rows="4" name="content" placeholder="What's on your mind?"></textarea>
+                <button id="create-post" type="submit">Post</button>
+            </form>
+        </div>
+
+        <div class="posts-container">
+            <h2>Posts</h2>
+            <% user.post.reverse().forEach(function(post) { %>
+                <div class="post" id="post-<%= post._id %>">
+                    <p class="post-content"><%= post.content %></p>
+                    <div class="post-actions">
+                        <button class="like-btn">
+                            <a href="/like/<%= post._id %>"><%= post.likes.length %> Like</a>
+                        </button>
+                        <button class="edit-btn" onclick="showEditForm('<%= post._id %>', '<%= post.content %>')">Edit</button>
+                        <button class="delete-btn">
+                            <a href="/delete/<%= post._id %>">Delete</a>
+                        </button>
+                    </div>
+                    <!-- Edit Post Form (hidden by default) -->
+                    <form id="edit-form-<%= post._id %>" class="edit-post-form" action="/edit/<%= post._id %>" method="post" style="display:none;">
+                        <textarea name="content" rows="4"><%= post.content %></textarea>
+                        <button type="submit">Update</button>
+                        <button type="button" onclick="hideEditForm('<%= post._id %>')">Cancel</button>
+                    </form>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        
+        function showEditForm(postId, content) {
+            document.getElementById(`edit-form-${postId}`).style.display = 'block';
+            document.querySelector(`#post-${postId} .post-content`).style.display = 'none';
+        }
+
+        
+        function hideEditForm(postId) {
+            document.getElementById(`edit-form-${postId}`).style.display = 'none';
+            document.querySelector(`#post-${postId} .post-content`).style.display = 'block';
+        }
+
+        
+        document.getElementById('edit-profile').addEventListener('click', function() {
+            document.getElementById('edit-profile-form').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

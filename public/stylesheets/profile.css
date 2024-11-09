@@ -1,0 +1,138 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.user-info {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.user-info h2 {
+    margin: 10px 0;
+}
+
+.user-info p {
+    margin: 5px 0;
+    color: #777;
+}
+
+.user-info .profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+#edit-profile {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#edit-profile:hover {
+    background: #0056b3;
+}
+
+#edit-profile-form {
+    margin-top: 20px;
+}
+
+#edit-profile-form input[type="file"] {
+    display: block;
+    margin: 10px auto;
+}
+
+#edit-profile-form button[type="submit"] {
+    background: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#edit-profile-form button[type="submit"]:hover {
+    background: #218838;
+}
+
+.post-form h3 {
+    margin-bottom: 10px;
+}
+
+.post-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#create-post {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#create-post:hover {
+    background: #0056b3;
+}
+
+.posts-container {
+    margin-top: 30px;
+}
+
+.posts-container h2 {
+    margin-bottom: 20px;
+}
+
+.post {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.post-actions button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.post-actions button:hover {
+    background: #0056b3;
+}
+
+.post-actions a {
+    color: #fff;
+    text-decoration: none;
+}
